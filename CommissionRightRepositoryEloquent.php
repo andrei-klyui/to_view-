@@ -20,7 +20,7 @@ class CommissionRightRepositoryEloquent extends BaseRepository implements Commis
      *
      * @return string
      */
-    public function model()
+    public function model(): string
     {
         return CommissionRight::class;
     }
@@ -30,7 +30,7 @@ class CommissionRightRepositoryEloquent extends BaseRepository implements Commis
     *
     * @return mixed
     */
-    public function validator()
+    public function validator(): mixed
     {
         return CommissionRightValidator::class;
     }
@@ -49,13 +49,11 @@ class CommissionRightRepositoryEloquent extends BaseRepository implements Commis
      * @param Assignment $assignment
      * @return mixed
      */
-    public function getListAll(Assignment $assignment)
+    public function getListAll(Assignment $assignment): mixed
     {
-        $statuses = $this->model
-            ->whereCompanyId($assignment->story->company_id)
-            ->orderBy('name')
-            ->get();
-
-        return $statuses;
+        return $statuses = $this->model
+                ->whereCompanyId($assignment->story->company_id)
+                ->orderBy('name')
+                ->get();
     }
 }
